@@ -1,0 +1,284 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÉduFun - Plateforme Éducative Interactive</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+    {
+        "imports": {
+            "confetti": "https://cdn.skypack.dev/canvas-confetti",
+            "gsap": "https://cdn.skypack.dev/gsap"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <svg width="50" height="50" viewBox="0 0 50 50">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#5E35B1" />
+                            <stop offset="100%" stop-color="#7E57C2" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="25" cy="25" r="23" fill="url(#logoGradient)" />
+                    <text x="25" y="32" text-anchor="middle" fill="white" font-size="24" font-weight="bold">É</text>
+                </svg>
+                <h1>ÉduFun</h1>
+            </div>
+            <div class="user-profile">
+                <div class="avatar-container">
+                    <div class="avatar" id="current-avatar"></div>
+                </div>
+                <div class="points">
+                    <span id="points-counter">0</span> <span class="star">⭐</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="welcome-screen" class="content-section active">
+                <h2>Bienvenue dans ton aventure d'apprentissage !</h2>
+                <div class="avatar-customization">
+                    <h3>Choisis ton personnage animal</h3>
+                    <div class="avatar-options">
+                        <div class="avatar avatar-1" data-id="1"></div>
+                        <div class="avatar avatar-2" data-id="2"></div>
+                        <div class="avatar avatar-3" data-id="3"></div>
+                        <div class="avatar avatar-4" data-id="4"></div>
+                    </div>
+                    <div class="name-input">
+                        <label for="user-name">Ton prénom d'aventurier :</label>
+                        <input type="text" id="user-name" maxlength="15">
+                    </div>
+                    <button id="start-adventure" class="primary-button">Commencer l'aventure</button>
+                </div>
+            </div>
+
+            <div id="modules-screen" class="content-section">
+                <h2>Choisis ta prochaine mission !</h2>
+                <div class="modules-grid">
+                    <div class="module-card" data-module="maths">
+                        <div class="module-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40">
+                                <defs>
+                                    <linearGradient id="mathGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#5E35B1" />
+                                        <stop offset="100%" stop-color="#7E57C2" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="20" cy="20" r="18" fill="url(#mathGradient)" />
+                                <text x="20" y="25" text-anchor="middle" fill="white" font-size="14">123</text>
+                            </svg>
+                        </div>
+                        <h3>Mathématiques</h3>
+                        <p>Nombres, formes, calculs et plus</p>
+                    </div>
+                    <div class="module-card" data-module="langues">
+                        <div class="module-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40">
+                                <defs>
+                                    <linearGradient id="langueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#2196F3" />
+                                        <stop offset="100%" stop-color="#4CAF50" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="20" cy="20" r="18" fill="url(#langueGradient)" />
+                                <text x="20" y="25" text-anchor="middle" fill="white" font-size="14">ABC</text>
+                            </svg>
+                        </div>
+                        <h3>Langues</h3>
+                        <p>Alphabet, vocabulaire et grammaire</p>
+                    </div>
+                    <div class="module-card" data-module="sciences">
+                        <div class="module-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40">
+                                <defs>
+                                    <linearGradient id="scienceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#9C27B0" />
+                                        <stop offset="100%" stop-color="#FF9800" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="20" cy="20" r="18" fill="url(#scienceGradient)" />
+                                <text x="20" y="25" text-anchor="middle" fill="white" font-size="14">🔬</text>
+                            </svg>
+                        </div>
+                        <h3>Sciences</h3>
+                        <p>Exploration, découvertes et expériences</p>
+                    </div>
+                    <div class="module-card" data-module="arts">
+                        <div class="module-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40">
+                                <defs>
+                                    <linearGradient id="artGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#FFEB3B" />
+                                        <stop offset="100%" stop-color="#FF9800" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="20" cy="20" r="18" fill="url(#artGradient)" />
+                                <text x="20" y="25" text-anchor="middle" fill="white" font-size="14">🎨</text>
+                            </svg>
+                        </div>
+                        <h3>Arts</h3>
+                        <p>Dessin, musique et créativité</p>
+                    </div>
+                    <div class="module-card" data-module="sport">
+                        <div class="module-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40">
+                                <defs>
+                                    <linearGradient id="sportGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#4CAF50" />
+                                        <stop offset="100%" stop-color="#8BC34A" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="20" cy="20" r="18" fill="url(#sportGradient)" />
+                                <text x="20" y="25" text-anchor="middle" fill="white" font-size="14">🏃</text>
+                            </svg>
+                        </div>
+                        <h3>Éducation physique</h3>
+                        <p>Mouvements, coordination et jeux actifs</p>
+                    </div>
+                    <div class="module-card" data-module="metiers">
+                        <div class="module-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40">
+                                <defs>
+                                    <linearGradient id="metierGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#FF9800" />
+                                        <stop offset="100%" stop-color="#FFC107" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="20" cy="20" r="18" fill="url(#metierGradient)" />
+                                <text x="20" y="25" text-anchor="middle" fill="white" font-size="14">👷</text>
+                            </svg>
+                        </div>
+                        <h3>Métiers</h3>
+                        <p>Découverte des professions et avenir</p>
+                    </div>
+                    <div class="module-card" data-module="geographie">
+                        <div class="module-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40">
+                                <defs>
+                                    <linearGradient id="geographieGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#03A9F4" />
+                                        <stop offset="100%" stop-color="#00BCD4" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="20" cy="20" r="18" fill="url(#geographieGradient)" />
+                                <text x="20" y="25" text-anchor="middle" fill="white" font-size="14">🌍</text>
+                            </svg>
+                        </div>
+                        <h3>Géographie</h3>
+                        <p>Monde, continents et Algérie</p>
+                    </div>
+                    <div class="module-card" data-module="dashboard">
+                        <div class="module-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40">
+                                <defs>
+                                    <linearGradient id="dashboardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#607D8B" />
+                                        <stop offset="100%" stop-color="#455A64" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="20" cy="20" r="18" fill="url(#dashboardGradient)" />
+                                <text x="20" y="25" text-anchor="middle" fill="white" font-size="14">📊</text>
+                            </svg>
+                        </div>
+                        <h3>Tableau de bord</h3>
+                        <p>Suivi des progrès et récompenses</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="activity-screen" class="content-section">
+                <div class="activity-header">
+                    <button id="back-to-modules" class="secondary-button">Retour</button>
+                    <h2 id="activity-title">Activité</h2>
+                </div>
+                <div id="activity-content">
+                    <!-- Contenu dynamique des activités -->
+                </div>
+            </div>
+
+            <div id="dashboard-screen" class="content-section">
+                <h2>Tableau de bord</h2>
+                <div class="dashboard-content">
+                    <div class="progress-overview">
+                        <h3>Tes progrès</h3>
+                        <div class="progress-bars">
+                            <div class="progress-item">
+                                <span>Mathématiques</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%;" id="math-progress"></div>
+                                </div>
+                                <span class="progress-percentage" id="math-percentage">0%</span>
+                            </div>
+                            <div class="progress-item">
+                                <span>Langues</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%;" id="langue-progress"></div>
+                                </div>
+                                <span class="progress-percentage" id="langue-percentage">0%</span>
+                            </div>
+                            <div class="progress-item">
+                                <span>Sciences</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%;" id="science-progress"></div>
+                                </div>
+                                <span class="progress-percentage" id="science-percentage">0%</span>
+                            </div>
+                            <div class="progress-item">
+                                <span>Arts</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%;" id="art-progress"></div>
+                                </div>
+                                <span class="progress-percentage" id="art-percentage">0%</span>
+                            </div>
+                            <div class="progress-item">
+                                <span>Éducation physique</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%;" id="sport-progress"></div>
+                                </div>
+                                <span class="progress-percentage" id="sport-percentage">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="achievements">
+                        <h3>Tes récompenses</h3>
+                        <div class="badges-container" id="badges-container">
+                            <!-- Badges seront ajoutés dynamiquement -->
+                        </div>
+                    </div>
+                    <button id="back-to-modules-from-dashboard" class="primary-button">Retour aux modules</button>
+                </div>
+            </div>
+        </main>
+
+        <div id="reward-popup" class="popup">
+            <div class="popup-content">
+                <h3>Bravo !</h3>
+                <p id="reward-message">Tu as gagné une récompense !</p>
+                <div id="reward-badge" class="reward-badge"></div>
+                <button id="close-reward" class="primary-button">Super !</button>
+            </div>
+        </div>
+
+        <div id="parent-login" class="popup">
+            <div class="popup-content parent-login-content">
+                <h3>Espace Parents</h3>
+                <p>Entrez votre code d'accès pour voir les progrès détaillés de votre enfant.</p>
+                <input type="password" id="parent-code" placeholder="Code d'accès">
+                <div class="button-group">
+                    <button id="parent-login-cancel" class="secondary-button">Annuler</button>
+                    <button id="parent-login-submit" class="primary-button">Accéder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
